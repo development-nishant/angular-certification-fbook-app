@@ -1,0 +1,54 @@
+<div class="container">
+    <br>
+    <br>
+  <br>
+  <br>
+    <div class="row offset-lg-3">
+
+        <div class="card col-lg-7">
+
+            <div class="card-body">
+                <h5 class="card-title">Registration</h5>
+              <!--  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
+                <form>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">First Name</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Last Name</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Last Name">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Gender</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+          <option>Male</option>
+          <option>Female</option>
+          <option>Transgender</option>
+        </select>
+                    </div>
+
+                </form>
+              <div class="text-right">
+                <button class="btn btn-primary " (click)="onRegisterClick()">Register</button>
+              </div>
+
+            </div>
+        </div>
+    </div>
+</div>

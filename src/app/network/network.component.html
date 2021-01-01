@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <br>
+      <app-profile></app-profile>
+    </div>
+    <div class="col-lg-9">
+      <br>
+
+      <div class="list-group">
+        <div *ngFor="let _fReq of _allFriendRequests; index as i; first as isFirst" style="margin-bottom: 10px" class="row list-group-item list-group-item-action {{isFirst?'':''}}">
+          <div class=" d-flex w-100 justify-content-between">
+            <h5 class="col-lg-9 mb-1">{{_fReq['friendId']}}</h5>
+            <button class="col-lg-3 btn btn-primary " (click)="updateFriendRequest($event,_fReq)">{{_fReq['status']}}</button>
+
+          </div>
+          <!--  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>-->
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

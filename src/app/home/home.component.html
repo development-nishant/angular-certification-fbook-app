@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <br>
+          <app-profile></app-profile>
+        </div>
+        <div class="col-lg-9">
+            <br>
+            <div class="row" style="margin:0px 0px 0px 0px;">
+                <div class="input-group ">
+                    <input type="text" aria-label="First name" placeholder="Write something..." class="form-control">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" (click)="createNewPost()">Post</button>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="list-group">
+                <a *ngFor="let _post of _allPosts; index as i; first as isFirst" style="margin-bottom: 10px" class="list-group-item list-group-item-action {{isFirst?'':''}}">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{_post['post']}}</h5>
+                        <small>{{_post['createdDate'].substr(0,10)}}</small>
+                    </div>
+                  <!--  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>-->
+                  <small><i>Posted by {{_post['userName']}}</i></small>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
