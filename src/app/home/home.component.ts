@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {JwtToken} from '../utils/jwttoken';
-import {JwtTokenService} from '../shared/jwt-token.service';
+import {JwtTokenService} from '../shared/services/jwt-token.service';
 import {HomeService} from './home.service';
 import {Post} from '../utils/post';
-import {SharedDataService} from "../shared/shared-data.service";
+import {SharedDataService} from "../shared/services/shared-data.service";
 import {NetworkService} from "../network/network.service";
 
 @Component({

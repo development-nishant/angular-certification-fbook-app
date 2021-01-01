@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 // @ts-ignore
-import {JwtToken} from '../utils/jwttoken';
+import {JwtToken} from '../../utils/jwttoken';
 
 @Injectable({
   providedIn: 'root'

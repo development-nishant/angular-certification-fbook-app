@@ -16,7 +16,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { ResetComponent } from './reset/reset.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
-import {HttpInterceptorService} from './shared/http-interceptor.service';
+import {HttpInterceptorService} from './shared/services/http-interceptor.service';
 
 @NgModule({
   declarations: [

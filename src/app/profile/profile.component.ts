@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {JwtToken} from '../utils/jwttoken';
-import {JwtTokenService} from '../shared/jwt-token.service';
-import {SharedDataService} from "../shared/shared-data.service";
+import {JwtTokenService} from '../shared/services/jwt-token.service';
+import {SharedDataService} from "../shared/services/shared-data.service";
 
 @Component({
   selector: 'app-profile',

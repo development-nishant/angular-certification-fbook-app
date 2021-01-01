@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RegistrationService} from './registration.service';
 import {User} from '../utils/user';
-import {JwtTokenService} from '../shared/jwt-token.service';
+import {JwtTokenService} from '../shared/services/jwt-token.service';
 
 @Component({
   selector: 'app-registration',

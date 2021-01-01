@@ -1,1 +1,24 @@
-<p>friend-list works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <br>
+      <app-profile></app-profile>
+    </div>
+    <div class="col-lg-9">
+      <br>
+
+      <div class="list-group">
+        <h5 class="card-title ">Friend List</h5>
+        <div *ngFor="let _frnd of _allFriendList; index as i; first as isFirst" style="margin-bottom: 10px" class="row list-group-item list-group-item-action {{isFirst?'':''}}">
+          <div class=" d-flex w-100 justify-content-between">
+            <h5 class="col-lg-9 mb-1">{{_frnd['friendId']}}</h5>
+
+          </div>
+          <!--  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>-->
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from './login.service';
-import {JwtTokenService} from '../shared/jwt-token.service';
+import {JwtTokenService} from '../shared/services/jwt-token.service';
 // @ts-ignore
 import {JwtToken} from '../utils/jwttoken';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import {JwtToken} from '../utils/jwttoken';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService : LoginService,private jwtTokenService:JwtTokenService) { }
+  constructor(private router:Router,private loginService : LoginService,private jwtTokenService:JwtTokenService) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
     this.loginService.authenticate(loginDetails).subscribe((resp:any)=>{
         if(resp && resp["token"]){
           this.jwtTokenService.setToken(resp);
+          this.router.navigateByUrl("main/home")
         }
     }, (err)=>{
         console.log("Auth failed");

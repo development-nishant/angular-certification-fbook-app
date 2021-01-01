@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 // @ts-ignore
-import {JwtToken} from '../utils/jwttoken';
+import {JwtToken} from '../../utils/jwttoken';
 import {LocalStorageService} from './local-storage.service';
 
 @Injectable({

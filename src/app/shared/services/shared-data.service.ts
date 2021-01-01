@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable, Subject} from "rxjs";
-import {Post} from "../utils/post";
+import {Post} from "../../utils/post";
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +22,9 @@ export class SharedDataService {
   }
   setPostsCount(_noOfPosts : number){
     this.userProfile._noOfPosts = _noOfPosts;
+  }
+  resetCounts():void{
+    this.userProfile._noOfConnections = 0;
+    this.userProfile._noOfPosts = 0;
   }
 }

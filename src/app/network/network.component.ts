@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Post} from '../utils/post';
 import {NetworkService} from './network.service';
-import {SharedDataService} from "../shared/shared-data.service";
+import {SharedDataService} from "../shared/services/shared-data.service";
 
 @Component({
   selector: 'app-network',

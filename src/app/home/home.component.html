@@ -17,6 +17,7 @@
             <br>
 
             <div class="list-group">
+              <h5 class="card-title ">Posts</h5>
                 <a *ngFor="let _post of _allPosts; index as i; first as isFirst" style="margin-bottom: 10px" class="list-group-item list-group-item-action {{isFirst?'':''}}">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{_post['post']}}</h5>

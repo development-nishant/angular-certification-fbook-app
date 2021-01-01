@@ -8,6 +8,7 @@
       <br>
 
       <div class="list-group">
+        <h5 class="card-title ">Friend Requests</h5>
         <div *ngFor="let _fReq of _allFriendRequests; index as i; first as isFirst" style="margin-bottom: 10px" class="row list-group-item list-group-item-action {{isFirst?'':''}}">
           <div class=" d-flex w-100 justify-content-between">
             <h5 class="col-lg-9 mb-1">{{_fReq['friendId']}}</h5>

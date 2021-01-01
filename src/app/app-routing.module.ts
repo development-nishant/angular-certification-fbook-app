@@ -14,8 +14,13 @@ import {MainComponent} from './main/main.component';
 // @ts-ignore
 // @ts-ignore
 const routes: Routes = [
-
-  { path: '', component: AuthenticationComponent,children:[
+  {
+    path:'',
+    redirectTo: 'auth',
+    pathMatch: 'full'
+  },
+  { path: 'auth', component: AuthenticationComponent,children:[
+      {path: '', component: LoginComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegistrationComponent},
       {path: 'forgotpass', component: ForgotpasswordComponent},
