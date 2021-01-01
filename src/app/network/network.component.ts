@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Post} from '../utils/post';
 import {NetworkService} from './network.service';
+import {SharedDataService} from "../shared/shared-data.service";
 
 @Component({
   selector: 'app-network',
@@ -9,7 +10,7 @@ import {NetworkService} from './network.service';
 })
 export class NetworkComponent implements OnInit {
   _allFriendRequests : any[];
-  constructor(private networkService:NetworkService) { }
+  constructor(private networkService:NetworkService,private sharedDataService:SharedDataService) { }
 
   ngOnInit(): void {
     this.fetchAllFriendRequests();
@@ -18,6 +19,8 @@ export class NetworkComponent implements OnInit {
     //{"_id":"5df7ba8056cdc128f8c72995","userId":"5ed37322cb3a3d0004795ec2","friendId":"7ed22585cb3a3d000745ec5","status":"you are my friend","createdDate":"2019-12-16T17:10:24.074Z","__v":0,"id":"5df7ba8056cdc128f8c72995"}
     this.networkService.fetchAllFriendRequests().subscribe((resp:any)=>{
       this._allFriendRequests = resp;
+      this.sharedDataService.setConnectionsCount(resp.length);
+      this.sharedDataService.publishProfileData();
     },(err:any)=>{});
   }
   updateFriendRequest($event:any,_fReq:any){

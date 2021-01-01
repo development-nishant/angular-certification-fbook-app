@@ -1,24 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {JwtToken} from '../utils/jwttoken';
 import {JwtTokenService} from '../shared/jwt-token.service';
+import {SharedDataService} from "../shared/shared-data.service";
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit ,OnDestroy{
   jwtToken : JwtToken;
-  profile : any ;
-  constructor(private jwtTokenService:JwtTokenService) {
+  userProfile : any ;
+  private userProfileObservableSubscription :any;
+
+  constructor(private jwtTokenService:JwtTokenService , private sharedDataService :SharedDataService) {
     this.jwtToken = this.jwtTokenService.getToken();
-    this.profile = {
-      _noOfConn:0,
+    this.userProfile = {
+      _noOfConnections:0,
       _noOfPosts:0
     };
+
   }
 
   ngOnInit(): void {
+    this.userProfileObservableSubscription = this.sharedDataService.userProfileObservable.subscribe((resp:any)=>{
+        this.userProfile._noOfConnections = resp["_noOfConnections"];
+        this.userProfile._noOfPosts = resp["_noOfPosts"];
+        debugger;
+      },
+      (err:any)=>{
+        console.log("Err"+err);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.userProfileObservableSubscription.unsubscribe();
   }
 
 }

@@ -3,6 +3,8 @@ import {JwtToken} from '../utils/jwttoken';
 import {JwtTokenService} from '../shared/jwt-token.service';
 import {HomeService} from './home.service';
 import {Post} from '../utils/post';
+import {SharedDataService} from "../shared/shared-data.service";
+import {NetworkService} from "../network/network.service";
 
 @Component({
   selector: 'app-home',
@@ -12,18 +14,26 @@ import {Post} from '../utils/post';
 export class HomeComponent implements OnInit {
   jwtToken : JwtToken;
   _allPosts : Post[];
-  constructor(private jwtTokenService:JwtTokenService,private homeService:HomeService) {
+  constructor(private jwtTokenService:JwtTokenService,private homeService:HomeService , private networkService:NetworkService,private sharedDataService:SharedDataService) {
 
   }
 
   ngOnInit(): void {
     this.jwtToken = this.jwtTokenService.getToken();
     this.fetchAllPosts();
+    this.fetchAllConnections();
   }
   fetchAllPosts () :void{
     this.homeService.fetchAllPosts().subscribe((resp:any)=>{
-      debugger;
       this._allPosts = resp;
+      this.sharedDataService.setPostsCount( resp.length);
+      this.sharedDataService.publishProfileData();
+    },(err:any)=>{});
+  }
+  fetchAllConnections () :void{
+    this.networkService.fetchAllFriendRequests().subscribe((resp:any)=>{
+      this.sharedDataService.setConnectionsCount( resp.length);
+      this.sharedDataService.publishProfileData();
     },(err:any)=>{});
   }
  createNewPost():void{
