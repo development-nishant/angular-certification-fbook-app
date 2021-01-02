@@ -1,24 +1,26 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-dark">
-    <a class="navbar-brand" href="#" style="color:white">{{app_config.APP_NAME}}</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav" style="float: right;">
+  <img src="assets/people-hands.jpg" style="height: 40px;width: 40px;" class="card-img-top" alt="...">
+    <a class="navbar-brand" href="#" style="color:white;margin-left: 10px;">{{app_config.APP_NAME}}</a>
 
-            <li class="nav-item">
-                <a class="nav-link" style="color:white" href="#" routerLink="/main/home">Home  <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color:white" href="#" routerLink="/main/network">Network</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color:white" href="#" routerLink="/main/friends">Friends</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color:white" href="#" routerLink="/main/settings">Settings</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color:white" href="#" (click)="onLogoutClick($event)">Logout</a>
-            </li>
-        </ul>
-    </div>
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" style="color:white" href="#" routerLink="/main/home">Home  <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:white" href="#" routerLink="/main/network">Network</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:white" href="#" routerLink="/main/friends">Friends</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:white" href="#" routerLink="/main/settings">Settings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:white" href="#" (click)="onLogoutClick($event)">Logout</a>
+      </li>
+    </ul>
+  </div>
+
 </nav>
 <router-outlet></router-outlet>

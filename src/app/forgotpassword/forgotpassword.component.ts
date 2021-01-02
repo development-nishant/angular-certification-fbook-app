@@ -11,5 +11,7 @@ export class ForgotpasswordComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  onGoClick(){
 
+  }
 }

@@ -24,10 +24,13 @@ export class LoginComponent implements OnInit {
     this.loginService.authenticate(loginDetails).subscribe((resp:any)=>{
         if(resp && resp["token"]){
           this.jwtTokenService.setToken(resp);
-          this.router.navigateByUrl("main/home")
+          this.router.navigateByUrl("main/home");
         }
     }, (err)=>{
         console.log("Auth failed");
     });
+  }
+  onForgotPassClick(){
+    this.router.navigateByUrl("auth/forgotpass");
   }
 }
