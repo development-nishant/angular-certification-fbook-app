@@ -22,11 +22,14 @@ export class SettingsComponent implements OnInit {
     this.fetchUserDetailById();
   }
   onProfileSave(){
+    this.settingsService.saveProfileSettings(this.profileSettings).subscribe(resp=>{
+      alert("Profile settings saved!");
+    },
+    err=>{
+      alert(err.error.message);
+    });
+  }
 
-  }
-  handleChange1(){
-    debugger;
-  }
   fetchUserDetailById(){
     let jwtToken = this.jwtTokenService.getToken() ;
     let userId = jwtToken["_id"];
