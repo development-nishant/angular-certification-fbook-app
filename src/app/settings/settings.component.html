@@ -1,51 +1,65 @@
 <div class="container">
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <div class="row offset-lg-3">
+    <br>
+    <br>
+    <div class="row offset-lg-3">
 
-    <div class=" card col-lg-7 ">
+        <div class=" card col-lg-7 ">
 
-      <div class="card-body ">
+            <div class="card-body ">
 
-        <h5 class="card-title ">Settings</h5>
+                <h5 class="card-title ">Settings</h5>
 
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-secondary active">
-            <input type="radio" name="options" id="option1" autocomplete="off" checked> Profile settings
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary ">
+            <input type="radio" name="options" id="option1" autocomplete="off" [checked] = false (onChange)="handleChange1()"> Profile settings
           </label>
-          <label class="btn btn-secondary">
-            <input type="radio" name="options" id="option2" autocomplete="off"> Change Password
+                    <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option2" autocomplete="off"  [checked] = true> Change Password
           </label>
 
+                </div>
+                <!--  <p class="card-text ">With supporting text below as a natural lead-in to additional content.</p>-->
+                <br>
+                <br>
+                <form (ngSubmit)="onProfileSave()" #settingForm="ngForm">
+
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="email" class="form-control" id="firstName" aria-describedby="emailHelp" placeholder="Enter First Name" name="firstName" [(ngModel)]="profileSettings.firstName" #firstName="ngModel" required>
+                        <small id="firstNameHelp" style="color: red;" class="form-text" *ngIf="(firstName.touched || settingForm.submitted) && firstName.errors?.required">
+            First Name required.
+          </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="email" class="form-control" id="lastName" aria-describedby="emailHelp" placeholder="Enter Last Name" name="lastName" [(ngModel)]="profileSettings.lastName" #lastName="ngModel" required>
+                        <small id="lastNameHelp" class="form-text" style="color: red;" *ngIf="(lastName.touched || settingForm.submitted) && lastName.errors?.required">Last name required.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" [(ngModel)]="profileSettings.email" #email="ngModel" required>
+                        <small id="emailHelp" class="form-text" style="color: red;" *ngIf="(email.touched || settingForm.submitted) && email.errors?.required">Email required.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select class="form-control" id="gender" name="gender" [(ngModel)]="profileSettings.gender" #gender="ngModel">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Transgender</option>
+              </select>
+                        <small id="genderHelp" class="form-text" style="color: red;" *ngIf="(gender.touched || settingForm.submitted) && gender.errors?.required">Gender required.</small>
+
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-primary ">Save</button>
+                    </div>
+
+                </form>
+
+            </div>
         </div>
-        <!--  <p class="card-text ">With supporting text below as a natural lead-in to additional content.</p>-->
-        <br>
-        <br>
-        <form>
-          <div class="form-group ">
-            <label for="exampleInputEmail1 ">Email address</label>
-            <input type="email " class="form-control " id="exampleInputEmail1 " aria-describedby="emailHelp " placeholder="Enter email ">
-            <!-- <small id="emailHelp " class="form-text text-muted ">We'll never share your email with anyone else.</small>-->
-          </div>
-          <div class="form-group ">
-            <label for="exampleInputPassword1 ">Password</label>
-            <input type="password " class="form-control " id="exampleInputPassword1 " placeholder="Password ">
-          </div>
-
-
-
-        </form>
-        <div class="text-right ">
-          <button class="btn btn-primary " (click)="onProfileSave()">Save</button>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
-
-

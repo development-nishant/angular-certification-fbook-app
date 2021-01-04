@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { User } from '../utils/user';
+import { SettingsService } from './settings.service';
+import { JwtTokenService } from '../shared/services/jwt-token.service';
+import { JwtToken } from '../utils/jwttoken';
 
 @Component({
   selector: 'app-settings',
@@ -6,12 +11,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+  profileSettings : User;
 
-  constructor() { }
+  @ViewChild("settingForm") settingForm :NgForm;
+  constructor(private settingsService : SettingsService,private jwtTokenService:JwtTokenService) {
+    this.profileSettings = new User();
+  }
 
   ngOnInit(): void {
+    this.fetchUserDetailById();
   }
   onProfileSave(){
+
+  }
+  handleChange1(){
+    debugger;
+  }
+  fetchUserDetailById(){
+    let jwtToken = this.jwtTokenService.getToken() ;
+    let userId = jwtToken["_id"];
+    if(userId){
+      this.settingsService.fetchUserDetailById(userId).subscribe(resp=>{
+        this.profileSettings = {...this.profileSettings,...resp};
+      });
+    }
 
   }
 }
