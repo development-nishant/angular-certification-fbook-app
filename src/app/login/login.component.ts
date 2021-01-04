@@ -39,8 +39,9 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl("main/home");
         }
       }, (err) => {
-        console.log("Auth failed");
-        alert(err.error);
+
+        alert(err.error.message);
+
       });
     }else{
       let err = this.loginForm.hasError('required');

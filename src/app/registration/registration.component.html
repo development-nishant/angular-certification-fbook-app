@@ -10,43 +10,98 @@
             <div class="card-body">
                 <h5 class="card-title">Registration</h5>
               <!--  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-                <form>
+                <form (ngSubmit)="onRegisterClick()" #registrationForm="ngForm">
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">First Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First Name">
-                        <small id="email" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <label for="firstName">First Name</label>
+                        <input type="email"
+                               class="form-control"
+                               id="firstName"
+                               aria-describedby="emailHelp"
+                               placeholder="Enter First Name"
+                               name="firstName"
+                               [(ngModel)]="newUser._firstName"
+                               #firstName="ngModel"
+                               required
+                        >
+                      <small id="firstNameHelp"  style="color: red;" class="form-text"
+                        *ngIf="(firstName.touched || registrationForm.submitted) && firstName.errors?.required">
+                      First Name required.
+                    </small>
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Last Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Last Name">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <label for="lastName">Last Name</label>
+                        <input type="email"
+                               class="form-control"
+                               id="lastName"
+                               aria-describedby="emailHelp"
+                               placeholder="Enter Last Name"
+                               name="lastName"
+                               [(ngModel)]="newUser._lastName"
+                               #lastName="ngModel"
+                               required
+                        >
+                      <small id="lastNameHelp" class="form-text" style="color: red;"
+                             *ngIf="(lastName.touched || registrationForm.submitted) && lastName.errors?.required"
+                      >Last name required.</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Email address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        <label for="email">Email address</label>
+                        <input type="email"
+                               class="form-control"
+                               id="email"
+                               placeholder="name@example.com"
+                               name="email"
+                               [(ngModel)]="newUser._email"
+                               #email="ngModel"
+                               required
+                        >
+                      <small id="emailHelp" class="form-text" style="color: red;"
+                             *ngIf="(email.touched || registrationForm.submitted) && email.errors?.required"
+                      >Email required.</small>
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <label for="password">Password</label>
+                        <input type="password"
+                               class="form-control"
+                               id="password"
+                               placeholder="Password"
+                               name="password"
+                               [(ngModel)]="newUser._password"
+                               #password="ngModel"
+                               required
+                        >
+                      <small id="passwordHelp" class="form-text" style="color: red;"
+                             *ngIf="(password.touched || registrationForm.submitted) && password.errors?.required"
+                      >Password required.</small>
+
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Gender</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-          <option>Male</option>
-          <option>Female</option>
-          <option>Transgender</option>
-        </select>
+                        <label for="gender">Gender</label>
+                        <select class="form-control"
+                                id="gender"
+                                name="gender"
+                                [(ngModel)]="newUser._gender"
+                                #gender="ngModel"
+                        >
+                              <option>Male</option>
+                              <option>Female</option>
+                              <option>Transgender</option>
+                        </select>
+                      <small id="genderHelp" class="form-text" style="color: red;"
+                             *ngIf="(gender.touched || registrationForm.submitted) && gender.errors?.required"
+                      >Gender required.</small>
+
                     </div>
+                  <div class="text-right">
+                    <button class="btn btn-primary " >Register</button>
+                  </div>
 
                 </form>
-              <div class="text-right">
-                <button class="btn btn-primary " (click)="onRegisterClick()">Register</button>
-              </div>
 
             </div>
         </div>
