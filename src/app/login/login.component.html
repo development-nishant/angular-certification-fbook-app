@@ -24,7 +24,7 @@
                                formControlName="email"
                         >
 
-                        <small id="emailErrorMsg " *ngIf ="(this.loginForm.get('email').touched || this.loginForm.get('email').dirty) && this.loginForm.get('email').errors?.required"
+                        <small id="emailErrorMsg " *ngIf ="(loginForm.get('email').touched || loginForm.get('email').dirty) && loginForm.get('email').errors?.required"
                                style="color: red;" class="form-text ">
                           Email address required</small>
                     </div>
@@ -36,7 +36,7 @@
                                id="password"
                                placeholder="Password ">
                       <small id="pwdErrorMsg "
-                             *ngIf="(this.loginForm.get('password').touched || this.loginForm.get('password').dirty) && this.loginForm.get('password').errors?.required"
+                             *ngIf="(loginForm.get('password').touched || loginForm.get('password').dirty) && loginForm.get('password').errors?.required"
                              style="color: red;" class="form-text ">
                         Password required</small>
                     </div>

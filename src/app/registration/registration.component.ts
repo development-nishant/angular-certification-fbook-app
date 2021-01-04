@@ -31,7 +31,7 @@ export class RegistrationComponent implements OnInit {
     user._gender = "male";
     user._dob = "01/01/1987";*/
     let registrationForm = this.registrationForm;
-    debugger;
+    ;
     if(this.registrationForm.valid){
       this.registrationService.registerNewUser(registrationForm.value).subscribe((resp:any)=>{
         alert(JSON.stringify(resp));

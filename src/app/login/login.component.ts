@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   }
   onLoginClick():void{
-    debugger;
+    ;
     if(this.loginForm.valid) {
 
       let loginDetails = this.loginForm.value;

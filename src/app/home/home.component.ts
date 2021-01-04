@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
    _newPost._userName = "HI Nishant";
    _newPost._userPhotoId = "HI Nishant";
    this.homeService.createNewPost(_newPost).subscribe((resp:any)=>{
-     debugger;
+     ;
    },(err:any)=>{});
  }
 

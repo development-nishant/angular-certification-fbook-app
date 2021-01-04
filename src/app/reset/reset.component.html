@@ -1,23 +1,53 @@
-<div>
-    <div class="card col-lg-4">
-        <h5 class="card-header">Login</h5>
-        <div class="card-body">
-            <!-- <h5 class="card-title">Login</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-            <form>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="row offset-lg-3">
 
-                <div class="form-group">
-                    <label for="exampleInputPassword1">New Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <a href="#" class="card-link">Confirm Password</a>
-                </div>
-                <div class="text-right">
-                    <button type="submit" class="btn btn-primary ">Reset</button>
-                </div>
+    <div class=" card col-lg-7 ">
 
-            </form>
+      <div class="card-body ">
+        <h5 class="card-title ">Reset</h5>
+        <!--  <p class="card-text ">With supporting text below as a natural lead-in to additional content.</p>-->
+        <form [formGroup]="resetForm" (ngSubmit)="onResetClick()">
+          <div class="form-group ">
+            <label for="newPassword">New Password</label>
+            <input type="password"
+                   class="form-control "
+                   id="newPassword"
+                   aria-describedby="newPasswordHelp "
+                   placeholder="Enter new password "
+                   formControlName="newPassword"
+            >
 
-        </div>
+            <small id="newPasswordErrorMsg " *ngIf ="(resetForm.get('newPassword').touched || resetForm.get('newPassword').dirty) && resetForm.get('newPassword').errors?.required"
+                   style="color: red;" class="form-text ">
+              new password required</small>
+          </div>
+          <div class="form-group ">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password"
+                   formControlName="confirmPassword"
+                   class="form-control "
+                   id="confirmPassword"
+                   placeholder="Enter confirm password ">
+            <small id="pwdErrorMsg "
+                   *ngIf="(resetForm.get('confirmPassword').touched || resetForm.get('confirmPassword').dirty) && resetForm.get('confirmPassword').errors?.required"
+                   style="color: red;" class="form-text ">
+              Confirm password required</small>
+          </div>
+
+          <div class="text-right form-group ">
+            <button class="btn btn-primary ">Reset</button>
+          </div>
+
+        </form>
+
+      </div>
     </div>
+  </div>
+</div>

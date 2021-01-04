@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit ,OnDestroy{
     this.userProfileObservableSubscription = this.sharedDataService.userProfileObservable.subscribe((resp:any)=>{
         this.userProfile._noOfConnections = resp["_noOfConnections"];
         this.userProfile._noOfPosts = resp["_noOfPosts"];
-        debugger;
+        ;
       },
       (err:any)=>{
         console.log("Err"+err);

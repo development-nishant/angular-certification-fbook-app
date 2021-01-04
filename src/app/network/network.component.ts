@@ -24,7 +24,7 @@ export class NetworkComponent implements OnInit {
     },(err:any)=>{});
   }
   updateFriendRequest($event:any,_fReq:any){
-  debugger;
+  ;
 
   }
 

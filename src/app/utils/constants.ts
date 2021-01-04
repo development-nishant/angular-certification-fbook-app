@@ -8,6 +8,7 @@ export const APP_CONFIG ={
     GET_ALL_POSTS: "posts",
     GET_ALL_FRIENDS:"friends",
     CREATE_NEW_POST:"posts/createpost",
-    AUTHENTICATE: "users/authenticate"
+    AUTHENTICATE: "users/authenticate",
+    RESET_PASS:"users/reset"
   }
 };
