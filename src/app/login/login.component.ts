@@ -4,6 +4,7 @@ import {JwtTokenService} from '../shared/services/jwt-token.service';
 // @ts-ignore
 import {JwtToken} from '../utils/jwttoken';
 import {Router} from "@angular/router";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -12,25 +13,46 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
+  loginForm : FormGroup;
   constructor(private router:Router,private loginService : LoginService,private jwtTokenService:JwtTokenService) { }
 
   ngOnInit(): void {
+    this.renderLoginFrom();
   }
-  authenticate(){
-    let loginDetails={
-      email:"nishant.prasad.2909@gmail.com",
-      password:"@Abcdef09"
-    };
-    this.loginService.authenticate(loginDetails).subscribe((resp:any)=>{
-        if(resp && resp["token"]){
+  renderLoginFrom(){
+    this.loginForm = new FormGroup({
+        email: new FormControl(null, Validators.required),
+        password: new FormControl(null, Validators.required)
+      }
+    );
+
+  }
+  onLoginClick():void{
+    debugger;
+    if(this.loginForm.valid) {
+
+      let loginDetails = this.loginForm.value;
+
+      this.loginService.authenticate(loginDetails).subscribe((resp: any) => {
+        if (resp && resp["token"]) {
           this.jwtTokenService.setToken(resp);
           this.router.navigateByUrl("main/home");
         }
-    }, (err)=>{
+      }, (err) => {
         console.log("Auth failed");
-    });
+        alert(err.error);
+      });
+    }else{
+      let err = this.loginForm.hasError('required');
+      debugger;
+      this.loginForm.get('email').markAsTouched();
+      this.loginForm.get('password').markAsTouched();
+      return;
+    }
   }
   onForgotPassClick(){
     this.router.navigateByUrl("auth/forgotpass");
   }
+
+
 }

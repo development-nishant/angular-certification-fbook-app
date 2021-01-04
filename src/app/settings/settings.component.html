@@ -1,19 +1,51 @@
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="row offset-lg-3">
+
+    <div class=" card col-lg-7 ">
+
+      <div class="card-body ">
+
+        <h5 class="card-title ">Settings</h5>
+
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-secondary active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked> Profile settings
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" name="options" id="option2" autocomplete="off"> Change Password
+          </label>
+
+        </div>
+        <!--  <p class="card-text ">With supporting text below as a natural lead-in to additional content.</p>-->
+        <br>
+        <br>
+        <form>
+          <div class="form-group ">
+            <label for="exampleInputEmail1 ">Email address</label>
+            <input type="email " class="form-control " id="exampleInputEmail1 " aria-describedby="emailHelp " placeholder="Enter email ">
+            <!-- <small id="emailHelp " class="form-text text-muted ">We'll never share your email with anyone else.</small>-->
+          </div>
+          <div class="form-group ">
+            <label for="exampleInputPassword1 ">Password</label>
+            <input type="password " class="form-control " id="exampleInputPassword1 " placeholder="Password ">
+          </div>
+
+
+
+        </form>
+        <div class="text-right ">
+          <button class="btn btn-primary " (click)="onProfileSave()">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-  </li>
-</ul>
 

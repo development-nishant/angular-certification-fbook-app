@@ -1,6 +1,6 @@
 
 export const APP_CONFIG ={
-  APP_NAME : "FBook",
+  APP_NAME : "F-Book",
   SERVICE_URL: {
     BASE_URL: "https://nodejs-fb-app.herokuapp.com/",
     USER_REGISTER: "users/register",

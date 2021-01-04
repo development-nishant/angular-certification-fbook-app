@@ -17,6 +17,7 @@ import { ResetComponent } from './reset/reset.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import {HttpInterceptorService} from './shared/services/http-interceptor.service';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {HttpInterceptorService} from './shared/services/http-interceptor.service
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,useClass:HttpInterceptorService,multi:true
