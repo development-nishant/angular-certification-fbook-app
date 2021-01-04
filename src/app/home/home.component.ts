@@ -5,6 +5,7 @@ import {HomeService} from './home.service';
 import {Post} from '../utils/post';
 import {SharedDataService} from "../shared/services/shared-data.service";
 import {NetworkService} from "../network/network.service";
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -14,14 +15,22 @@ import {NetworkService} from "../network/network.service";
 export class HomeComponent implements OnInit {
   jwtToken : JwtToken;
   _allPosts : Post[];
+  createNewPostForm : FormGroup;
   constructor(private jwtTokenService:JwtTokenService,private homeService:HomeService , private networkService:NetworkService,private sharedDataService:SharedDataService) {
 
   }
 
   ngOnInit(): void {
     this.jwtToken = this.jwtTokenService.getToken();
+    this.renderCreateNewForm();
     this.fetchAllPosts();
     this.fetchAllConnections();
+
+  }
+  renderCreateNewForm (){
+    this.createNewPostForm = new FormGroup({
+      postTxt : new FormControl(null,Validators.required)
+    });
   }
   fetchAllPosts () :void{
     this.homeService.fetchAllPosts().subscribe((resp:any)=>{
@@ -37,18 +46,25 @@ export class HomeComponent implements OnInit {
     },(err:any)=>{});
   }
  createNewPost():void{
+   let createNewPostForm = this.createNewPostForm;
+   let jwtToken = this.jwtToken;
    let _newPost = new Post();
-   _newPost._post = "HI Nishant";
-   _newPost._isActive = true;
-   _newPost._isAdmin = false;
-   _newPost._postImageId = "HI Nishant";
+   _newPost._post = createNewPostForm["postTxt"];
+   _newPost._isActive = jwtToken["isActive"];
+   _newPost._isAdmin = jwtToken["isAdmin"];;
+   _newPost._postImageId = jwtToken["photoId"];
    _newPost._profession = "HI Nishant";
-   _newPost._userId = "HI Nishant";
-   _newPost._userName = "HI Nishant";
-   _newPost._userPhotoId = "HI Nishant";
+   _newPost._userId = jwtToken["_id"];
+   _newPost._userName = jwtToken["firstName"] + " " + jwtToken["lastName"] ;
+   _newPost._userPhotoId = jwtToken["photoId"];
+
    this.homeService.createNewPost(_newPost).subscribe((resp:any)=>{
-     ;
-   },(err:any)=>{});
+      alert(resp.message);
+      this.createNewPostForm.reset();
+   },(err:any)=>{
+    alert(err.error.message);
+   });
+
  }
 
 }

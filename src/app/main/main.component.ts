@@ -22,7 +22,7 @@ export class MainComponent implements OnInit {
   onLogoutClick($event:any):void{
     this.sharedDataService.resetCounts();
     this.localStorageService.resetLocalStorage();
-    this.router.navigateByUrl("authenticate/");
+    this.router.navigateByUrl("auth/");
   }
 
 }
