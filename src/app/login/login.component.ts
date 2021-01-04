@@ -44,8 +44,6 @@ export class LoginComponent implements OnInit {
 
       });
     }else{
-      let err = this.loginForm.hasError('required');
-      debugger;
       this.loginForm.get('email').markAsTouched();
       this.loginForm.get('password').markAsTouched();
       return;
